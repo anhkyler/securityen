@@ -1,10 +1,9 @@
 package com.example.hs.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,9 +16,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	public SecurityConfig() {
-		// TODO Auto-generated constructor stub
-	}
+	
+//	
+//	public SecurityConfig() {
+//		// TODO Auto-generated constructor stub
+//	}
+	
+	
+	@Autowired 
+	CutomUserDetailService customeUserDetailService;
+	
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
@@ -27,9 +33,9 @@ public class SecurityConfig {
 			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests((authorizeHttpRequests) ->
              authorizeHttpRequests
-                     .requestMatchers(HttpMethod.GET).permitAll()
-			)
-			.httpBasic(Customizer.withDefaults());
+//             			.requestMatchers(HttpMethod.POST).authenticated()
+                    .anyRequest().authenticated()
+			);
 		
 		return httpSecurity.build();
 		
@@ -60,4 +66,9 @@ public class SecurityConfig {
 		}
 		return null;
 	}
+	
+//	@Bean
+//	PasswordEncoder passworEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 }

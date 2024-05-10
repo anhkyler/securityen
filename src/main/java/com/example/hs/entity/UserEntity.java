@@ -3,6 +3,7 @@ package com.example.hs.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
 
@@ -57,9 +59,20 @@ public class UserEntity implements Serializable {
 		this.password = password;
 	}
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<RolesEntity> roles = new ArrayList<>();
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+//    private List<RolesEntity> roles = new ArrayList<>();
+	
+	 @OneToMany(mappedBy = "userId")
+	    private Set<UserRolesEntity> userRoles;
+
+	public Set<UserRolesEntity> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(Set<UserRolesEntity> userRoles) {
+		this.userRoles = userRoles;
+	}
 
 	
 	
