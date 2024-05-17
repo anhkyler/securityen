@@ -26,8 +26,8 @@ public class RolesEntity implements Serializable{
     private String name;
 	
 	
-	@OneToMany(mappedBy = "rolesId")
-    private Set<UserRolesEntity> userRoles;
+//	@OneToMany(mappedBy = "rolesId")
+//    private Set<UserRolesEntity> userRoles;
 
 
 	public RolesEntity(Integer id, String name) {
@@ -56,14 +56,14 @@ public class RolesEntity implements Serializable{
 	}
 
 
-	public Set<UserRolesEntity> getUserRoles() {
-		return userRoles;
-	}
-
-
-	public void setUserRoles(Set<UserRolesEntity> userRoles) {
-		this.userRoles = userRoles;
-	}
+//	public Set<UserRolesEntity> getUserRoles() {
+//		return userRoles;
+//	}
+//
+//
+//	public void setUserRoles(Set<UserRolesEntity> userRoles) {
+//		this.userRoles = userRoles;
+//	}
 
 	
 }

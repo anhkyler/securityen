@@ -41,10 +41,10 @@ public class SendMessageToQueueController {
 	 }
 	
 	
-	@PostMapping("/signin")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto){
+	@GetMapping("/signin")
+    public ResponseEntity<String> authenticateUser(){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDto.getUsername(), loginDto.getPassword()));
+                "hieu", "123456"));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);

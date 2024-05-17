@@ -1,4 +1,4 @@
-package com.example.hs.security;
+package com.example.hs.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,11 +30,14 @@ public class CutomUserDetailService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserEntity user = userRepository.findByUserName(username)
-										.orElseThrow(() -> new UsernameNotFoundException("username not found"));
+//		UserEntity user = userRepository.findByUserName(username)
+//										.orElseThrow(() -> new UsernameNotFoundException("username not found"));
+		
+		UserEntity user = new UserEntity(1, "hieu", "123456");
 		
 		List<RolesEntity> listRoles = new ArrayList<>();
 		listRoles.add(new RolesEntity(1,"ADMIN"));
+//		return new User(user.getUserName(), user.getPassword(), null);
 		return new User(user.getUserName(), user.getPassword(), mapRolestoAuthorities(listRoles) );
 	}
 	

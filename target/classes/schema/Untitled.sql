@@ -1,8 +1,10 @@
 CREATE TABLE user (
     id int,
     username varchar(10),
-    password varchar(10),
-    PRIMARY KEY (id)
+    password varchar(255),
+    roles_id int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (roles_id) REFERENCES roles(id)
 );
 
 CREATE TABLE roles (

@@ -58,21 +58,21 @@ public class UserEntity implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-//    private List<RolesEntity> roles = new ArrayList<>();
-	
-	 @OneToMany(mappedBy = "userId")
-	    private Set<UserRolesEntity> userRoles;
 
-	public Set<UserRolesEntity> getUserRoles() {
-		return userRoles;
+	public UserEntity(Integer id, String userName, String password) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.password = password;
 	}
-
-	public void setUserRoles(Set<UserRolesEntity> userRoles) {
-		this.userRoles = userRoles;
-	}
+	
+//	 @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+//	            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+//	    private List<RolesEntity> roles = new ArrayList<>();
+	
+//	 @OneToMany(mappedBy = "userId")
+//	    private List<RolesEntity> listRole;
 
 	
 	
