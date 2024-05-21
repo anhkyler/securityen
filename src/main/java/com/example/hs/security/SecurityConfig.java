@@ -33,15 +33,12 @@ public class SecurityConfig {
 //	}
 //	
 	
-	
-	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 		httpSecurity
 			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests((authorizeHttpRequests) ->
              		authorizeHttpRequests
-//             			.requestMatchers(HttpMethod.POST).authenticated()
              			.requestMatchers(HttpMethod.GET).authenticated()
 			).httpBasic(Customizer.withDefaults());
 		
